@@ -1,0 +1,54 @@
+services:
+  admin-db:
+    image: postgres:16
+    container_name: admin-db
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypass
+    ports:
+      - "5432:5432"
+    volumes:
+      - admin_postgres_data:/var/lib/postgresql/data
+    networks:
+      - admin-net
+
+  admin-backend:
+    build:
+      context: ./backend
+    container_name: admin-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - admin-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://admin-db:5432/mydb
+      SPRING_DATASOURCE_USERNAME: myuser
+      SPRING_DATASOURCE_PASSWORD: mypass
+    volumes:
+      - ./backend:/app
+      - ~/.m2:/root/.m2
+    networks:
+      - admin-net
+
+  admin-frontend:
+    build:
+      context: ./frontend
+    container_name: admin-frontend
+    ports:
+      - "4200:4200"
+    depends_on:
+      - admin-backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - admin-net
+
+volumes:
+  admin_postgres_data:
+
+networks:
+  admin-net:

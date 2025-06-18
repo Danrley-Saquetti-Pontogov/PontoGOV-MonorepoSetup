@@ -1,3 +1,6 @@
+# Build Maven
+/target
+
 # IDEs Files
 *.iml
 .idea/
@@ -7,15 +10,22 @@
 .DS_Store
 Thumbs.db
 
-.editorconfig
-README.md
-
 # Git
 .git
 .gitignore
 
+# OS Files
+*.swp
+*.bak
+*.tmp
+
 # Logs
 *.log
+
+# Test coverage / Records
+jacoco.exec
+*.ec
+*.ser
 
 # Docker Files
 Dockerfile

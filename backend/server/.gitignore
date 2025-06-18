@@ -1,0 +1,42 @@
+# Build Maven
+/target/
+
+# Logs
+*.log
+
+# Config Files temp
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# IDEs Files and Folders
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.code-workspace
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Test coverage / Records
+*.ec
+*.ser
+jacoco.exec
+
+# Wrapper Maven
+!mvnw
+!mvnw.cmd
+!.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.properties
+.mvn/wrapper/maven-wrapper.log
+
+# Files executation
+*.class
+
+# Docker
+docker-compose.override.yml
+*.env
