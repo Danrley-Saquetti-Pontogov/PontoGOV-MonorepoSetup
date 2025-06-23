@@ -11,8 +11,8 @@ git clone https://github.com/Danrley-Saquetti-Pontogov/PontoGOV-MonorepoSetup.gi
 cd PontoGOV-MonorepoSetup
 ```
 
-2. Rode o docker-compose (não finalizado!):
+2. Rode o docker-compose:
 
 ```bash
-docker-compose up --build
+docker compose up
 ```
