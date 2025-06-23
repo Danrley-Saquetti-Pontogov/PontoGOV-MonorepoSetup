@@ -1,5 +1,7 @@
+name: pontogov_frontend_services
+
 services:
-  admin:
+  admin_frontend:
     build: .
     container_name: admin_frontend
     ports:

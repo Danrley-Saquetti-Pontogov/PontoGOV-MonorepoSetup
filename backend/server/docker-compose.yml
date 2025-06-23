@@ -1,7 +1,7 @@
-name: pontogov_backend
+name: pontogov_backend_services
 
 services:
-  postgres:
+  postgres_db:
     image: postgres:16
     container_name: postgres_db
     env_file:
@@ -9,7 +9,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_db_data:/var/lib/postgresql/data
     networks:
       - backend_network
 
@@ -19,7 +19,7 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - postgres
+      - postgres_db
     env_file:
       - .env
     networks:
@@ -29,7 +29,7 @@ services:
       - ~/.m2:/root/.m2
 
 volumes:
-  postgres_data:
+  postgres_db_data:
 
 networks:
   backend_network:
