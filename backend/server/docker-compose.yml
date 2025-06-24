@@ -11,9 +11,9 @@ services:
     volumes:
       - postgres_db_data:/var/lib/postgresql/data
     networks:
-      - backend_network
+      - pontogov_network
 
-  backend:
+  server_api:
     build: .
     container_name: server_api
     ports:
@@ -23,7 +23,7 @@ services:
     env_file:
       - .env
     networks:
-      - backend_network
+      - pontogov_network
     volumes:
       - .:/app
       - ~/.m2:/root/.m2
@@ -32,4 +32,4 @@ volumes:
   postgres_db_data:
 
 networks:
-  backend_network:
+  pontogov_network:
