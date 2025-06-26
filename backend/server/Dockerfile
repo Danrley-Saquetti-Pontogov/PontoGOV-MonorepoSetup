@@ -2,14 +2,15 @@ FROM eclipse-temurin:17-jdk-alpine
 
 WORKDIR /app
 
-COPY mvnw ./
+COPY mvnw .
 COPY .mvn .mvn
-COPY pom.xml ./
-
-RUN chmod +x mvnw && ./mvnw dependency:go-offline
-
+COPY pom.xml .
 COPY src ./src
 
-EXPOSE 8080
+RUN chmod +x mvnw
 
-CMD ["./mvnw", "spring-boot:run"]
+RUN ./mvnw clean package -DskipTests
+
+RUN mv target/*.jar app.jar
+
+CMD ["java", "-jar", "target/app.jar"]

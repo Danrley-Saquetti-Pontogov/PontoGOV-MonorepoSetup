@@ -1,16 +1,16 @@
-name: pontogov_services
+name: pontogov_services_dev
 
 services:
   postgres_db:
     extends:
-      file: ./backend/server/docker-compose.yml
+      file: ./backend/server/docker-compose.dev.yml
       service: postgres_db
     networks:
       - pontogov_network
 
   server_api:
     extends:
-      file: ./backend/server/docker-compose.yml
+      file: ./backend/server/docker-compose.dev.yml
       service: server_api
     depends_on:
       - postgres_db

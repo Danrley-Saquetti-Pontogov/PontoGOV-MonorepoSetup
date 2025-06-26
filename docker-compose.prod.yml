@@ -1,0 +1,31 @@
+name: pontogov_services_prod
+
+services:
+  postgres_db:
+    extends:
+      file: ./backend/server/docker-compose.prod.yml
+      service: postgres_db
+    networks:
+      - pontogov_network
+
+  server_api:
+    extends:
+      file: ./backend/server/docker-compose.prod.yml
+      service: server_api
+    depends_on:
+      - postgres_db
+    networks:
+      - pontogov_network
+
+  admin_frontend:
+    extends:
+      file: ./frontend/admin/docker-compose.yml
+      service: admin_frontend
+    networks:
+      - pontogov_network
+
+volumes:
+  postgres_db_data:
+
+networks:
+  pontogov_network:
