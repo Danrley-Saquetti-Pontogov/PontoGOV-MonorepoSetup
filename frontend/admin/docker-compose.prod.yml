@@ -1,0 +1,10 @@
+name: pontogov_frontend_services_prod
+
+services:
+  admin_frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: admin_frontend
+    ports:
+      - "4200:4200"

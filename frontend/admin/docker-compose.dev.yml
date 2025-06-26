@@ -1,0 +1,14 @@
+name: pontogov_frontend_services_dev
+
+services:
+  admin_frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: admin_frontend
+    ports:
+      - "4200:4200"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: ["ng", "serve", "--host", "0.0.0.0", "--poll=2000"]
